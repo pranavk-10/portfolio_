@@ -31,7 +31,7 @@ export const AchievementSection: React.FC = () => {
               key={item.title}
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="bg-[#121217] border border-white/15 p-8 relative flex flex-col justify-between group hover:border-[#FF3B30] transition-colors"
               data-cursor="LEADERSHIP"

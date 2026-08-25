@@ -30,7 +30,7 @@ export const EducationTimeline: React.FC = () => {
               key={index}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="relative bg-[#121217] border border-white/15 p-8 group hover:border-[#FF3B30] transition-colors"
               data-cursor="DEGREE"

@@ -33,7 +33,7 @@ export const ProjectArchive: React.FC = () => {
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               onClick={() => setSelectedProject(project)}
               className="bg-[#EAE6DF] border border-[#09090B]/15 p-8 flex flex-col justify-between cursor-pointer group hover:border-[#C83E3D] transition-all duration-300 relative min-h-[380px] shadow-sm hover:shadow-md"

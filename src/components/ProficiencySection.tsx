@@ -30,7 +30,7 @@ export const ProficiencySection: React.FC = () => {
               key={item.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="bg-[#EAE6DF] border border-[#09090B]/15 p-6 relative hover:border-[#09090B]/40 transition-all duration-300 group shadow-sm"
               data-cursor="METRIC"
@@ -58,7 +58,7 @@ export const ProficiencySection: React.FC = () => {
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${item.barPercent}%` }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 1, delay: 0.2 + index * 0.1, ease: 'easeOut' }}
                   className="h-full bg-gradient-to-r from-[#09090B]/60 to-[#C83E3D]"
                 />

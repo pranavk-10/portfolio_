@@ -61,9 +61,19 @@ export const Footer: React.FC = () => {
               </button>
             </div>
 
-            <p className="font-sans-editorial text-xs text-white/50 leading-relaxed">
-              * Editable social placeholders centralized in <code className="text-[#FF3B30] font-mono-editorial">src/data/siteData.ts</code>.
-            </p>
+
+            {/* Resume Button */}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between w-full bg-white text-[#08080A] px-6 py-4 font-mono-editorial text-xs font-bold uppercase tracking-widest hover:bg-[#FF3B30] hover:text-white transition-all group"
+              data-cursor="RESUME"
+            >
+              <span>VIEW RESUME (PDF)</span>
+              <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </a>
+
           </div>
 
           {/* Social Media Index */}
@@ -98,8 +108,13 @@ export const Footer: React.FC = () => {
             <span>ALL RIGHTS RESERVED</span>
           </div>
 
-          <div className="text-center md:text-right italic font-serif-editorial text-sm text-white/70">
-            "Designed like a contemporary magazine, built like an engineering system."
+          <div className="text-center md:text-right space-y-1">
+            <div className="italic font-serif-editorial text-sm text-white/70">
+              "Are you hungry? I haven't eaten since later this afternoon."
+            </div>
+            <div className="font-mono-editorial text-[10px] text-white/30 uppercase tracking-widest">
+              — Aaron, Primer (2004)
+            </div>
           </div>
         </div>
       </div>

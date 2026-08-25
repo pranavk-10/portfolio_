@@ -30,7 +30,7 @@ export const HobbyEditorial: React.FC = () => {
               key={hobby.title}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.06 }}
               className={`bg-[#EAE6DF] border border-[#09090B]/15 p-8 flex flex-col justify-between hover:border-[#C83E3D] transition-all duration-300 group ${
                 index === 0 || index === 8 ? 'md:col-span-2' : ''
