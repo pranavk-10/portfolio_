@@ -294,7 +294,7 @@ export const siteData = {
     channelName: "pannu core",
     handle: "@pannu_core",
     channelUrl: "https://youtube.com/@pannu_core",
-    tagline: "Exploring sound, cinema, tech, and cultural commentaries through a personal visual lens.",
+    tagline: "A personal diary of thoughts, experiences, and moments shared with the world.",
     subscribersNote: "Updated regularly with creative edits and visual logs",
     videos: [
       {

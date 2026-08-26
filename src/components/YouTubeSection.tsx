@@ -83,11 +83,11 @@ export const YouTubeSection: React.FC = () => {
               </div>
 
               <h3 className="font-display-editorial font-bold text-2xl sm:text-4xl text-[#F4F0EA] uppercase leading-tight">
-                CINEMATIC EDITS, GUITAR SESSIONS & TECH BREAKDOWNS
+                PERSONAL DIARY, HONEST THOUGHTS & LIFE IN PROGRESS
               </h3>
 
               <p className="font-sans-editorial text-xs sm:text-sm text-[#F4F0EA]/80 leading-relaxed">
-                Exploring soundscapes, analog guitar riffs, film direction, and hardware engineering breakdowns. Visual logs crafted with intentional aesthetics.
+                A personal diary of thoughts, experiences, lessons, and moments shared openly with anyone finding their way through life too.
               </p>
             </div>
 
@@ -96,7 +96,7 @@ export const YouTubeSection: React.FC = () => {
               <div className="flex items-center justify-between text-[10px] font-mono-editorial text-[#C83E3D] font-bold uppercase tracking-widest">
                 <span className="flex items-center space-x-1">
                   <Volume2 size={12} className="animate-bounce" />
-                  <span>NOW SELECTING</span>
+                  <span>LATEST BANGER</span>
                 </span>
                 <span>{activeVideo.duration}</span>
               </div>
