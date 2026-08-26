@@ -2,14 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { siteData } from '../data/siteData';
 
-const heroSlides = [
-  { src: '/images/pranav-hero-2.jpg', caption: 'A DIFFERENT ANGLE ON THE STORY', label: 'FIG. 02', rotate: true, contain: true, scale: 1.9 },
-  { src: '/images/pranav-hero-3.jpg', caption: 'THOUGHTS, DAYS, AND EVERYTHING BETWEEN', label: 'FIG. 03', position: 'center 44%' },
-  { src: '/images/pranav-hero-4.jpg', caption: 'NOTES FROM LIFE IN PROGRESS', label: 'FIG. 04', position: 'center 68%' },
-  { src: '/images/pranav-hero-6.jpg', caption: 'THE PEOPLE AND PLACES THAT SHAPE US', label: 'FIG. 06' },
-  { src: '/images/pranav-hero-7.jpg', caption: 'HONEST FRAMES FROM AN UNFINISHED STORY', label: 'FIG. 07' },
-  { src: '/images/pranav-hero-8.jpg', caption: 'SMALL MEMORIES, BIG FEELINGS', label: 'FIG. 08' },
-  { src: '/images/pranav-hero-12.jpg', caption: 'COVER FEATURE ARTICLE', label: 'FIG. 12' }
+type HeroSlide = {
+  src: string;
+  caption: string;
+  label: string;
+  position?: string;
+  rotate?: boolean;
+  contain?: boolean;
+  scale?: number;
+};
+
+const heroSlides: HeroSlide[] = [
+  { src: '/images/pranav-hero-3.jpg', caption: 'THOUGHTS, DAYS, AND EVERYTHING BETWEEN', label: 'FIG. 01', position: 'center 44%' },
+  { src: '/images/pranav-hero-4.jpg', caption: 'NOTES FROM LIFE IN PROGRESS', label: 'FIG. 02', position: 'center 68%' },
+  { src: '/images/pranav-hero-6.jpg', caption: 'THE PEOPLE AND PLACES THAT SHAPE US', label: 'FIG. 03' },
+  { src: '/images/pranav-hero-8.jpg', caption: 'SMALL MEMORIES, BIG FEELINGS', label: 'FIG. 04' },
+  { src: '/images/pranav-hero-12.jpg', caption: 'COVER FEATURE ARTICLE', label: 'FIG. 05' }
 ];
 
 export const MagazineHero: React.FC = () => {
