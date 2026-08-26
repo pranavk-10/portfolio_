@@ -1,9 +1,30 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { siteData } from '../data/siteData';
 
+const heroImages = [
+  ...Array.from({ length: 12 }, (_, index) => `/images/pranav-hero-${index + 1}.jpg`)
+];
+
 export const MagazineHero: React.FC = () => {
-  const { title, quote, metadata, heroImage } = siteData.personalInfo;
+  const { title, quote, metadata } = siteData.personalInfo;
+  const [activeImage, setActiveImage] = useState('/images/pranav-hero-11.jpg');
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) {
+      return;
+    }
+
+    const slideInterval = window.setInterval(() => {
+      setActiveImage((currentImage) => {
+        const currentIndex = heroImages.indexOf(currentImage);
+        return heroImages[(currentIndex + 1) % heroImages.length];
+      });
+    }, 5000);
+
+    return () => window.clearInterval(slideInterval);
+  }, [isPaused]);
 
   return (
     <section id="cover" className="relative min-h-screen pt-20 pb-16 flex flex-col justify-between overflow-hidden bg-[#09090B] border-b border-[#F4F0EA]/15">
@@ -72,6 +93,16 @@ export const MagazineHero: React.FC = () => {
           transition={{ duration: 1, delay: 0.3 }}
           className="relative w-full aspect-[21/9] min-h-[340px] md:min-h-[520px] bg-[#121215] border border-[#F4F0EA]/20 overflow-hidden shadow-2xl group"
           data-cursor="PORTRAIT"
+          onClick={() => setIsPaused((paused) => !paused)}
+          role="button"
+          tabIndex={0}
+          aria-label={isPaused ? 'Resume photo reel' : 'Pause photo reel'}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              setIsPaused((paused) => !paused);
+            }
+          }}
         >
           {/* Corner Brackets */}
           <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#C83E3D] z-20 pointer-events-none" />
@@ -80,11 +111,18 @@ export const MagazineHero: React.FC = () => {
           <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#C83E3D] z-20 pointer-events-none" />
 
           {/* Authentic Full Landscape Photo */}
-          <img
-            src={heroImage}
-            alt="Pranav Kamble — Authentic Full Landscape Photo"
-            className="w-full h-full object-cover object-center grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-          />
+          <AnimatePresence initial={false} mode="sync">
+            <motion.img
+              key={activeImage}
+              src={activeImage}
+              alt="Pranav Kamble — Personal Diary Photo Reel"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.1, ease: 'easeInOut' }}
+              className="absolute inset-0 w-full h-full object-cover object-[center_38%] grayscale contrast-110"
+            />
+          </AnimatePresence>
 
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/95 via-transparent to-[#09090B]/40" />

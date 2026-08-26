@@ -81,7 +81,7 @@ export const siteData = {
       issueTag: "SPRING / SUMMER EDITORIAL",
       barcode: "9 771234 567003 01"
     },
-    heroImage: "/images/pranav-hero.jpg",
+    heroImage: "/images/pranav-hero-12.jpg",
     portraitImage: "/images/pranav-portrait.jpg"
   },
 
