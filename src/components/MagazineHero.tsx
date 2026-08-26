@@ -2,14 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { siteData } from '../data/siteData';
 
-const heroImages = [
-  ...Array.from({ length: 12 }, (_, index) => `/images/pranav-hero-${index + 1}.jpg`)
+const heroSlides = [
+  { src: '/images/pranav-hero-1.jpg', caption: 'A PERSONAL DIARY IN MOTION', label: 'FIG. 01', position: 'center 48%' },
+  { src: '/images/pranav-hero-2.jpg', caption: 'A DIFFERENT ANGLE ON THE STORY', label: 'FIG. 02', rotate: true, contain: true, scale: 1.9 },
+  { src: '/images/pranav-hero-3.jpg', caption: 'THOUGHTS, DAYS, AND EVERYTHING BETWEEN', label: 'FIG. 03', position: 'center 44%' },
+  { src: '/images/pranav-hero-4.jpg', caption: 'NOTES FROM LIFE IN PROGRESS', label: 'FIG. 04', position: 'center 68%' },
+  { src: '/images/pranav-hero-5.jpg', caption: 'A QUIET MOMENT, SHARED OPENLY', label: 'FIG. 05', position: 'center 60%' },
+  { src: '/images/pranav-hero-6.jpg', caption: 'THE PEOPLE AND PLACES THAT SHAPE US', label: 'FIG. 06' },
+  { src: '/images/pranav-hero-7.jpg', caption: 'HONEST FRAMES FROM AN UNFINISHED STORY', label: 'FIG. 07' },
+  { src: '/images/pranav-hero-8.jpg', caption: 'SMALL MEMORIES, BIG FEELINGS', label: 'FIG. 08' },
+  { src: '/images/pranav-hero-9.jpg', caption: 'KEEPING THE CAMERA CLOSE', label: 'FIG. 09', position: 'center 4%' },
+  { src: '/images/pranav-hero-10.jpg', caption: 'ANOTHER PAGE FROM THE DIARY', label: 'FIG. 10', position: 'center 20%' },
+  { src: '/images/pranav-hero-11.jpg', caption: 'THE LATEST ENTRY', label: 'FIG. 11', contain: true, scale: 2.8, offsetY: -17 },
+  { src: '/images/pranav-hero-12.jpg', caption: 'COVER FEATURE ARTICLE', label: 'FIG. 12' }
 ];
 
 export const MagazineHero: React.FC = () => {
   const { title, quote, metadata } = siteData.personalInfo;
-  const [activeImage, setActiveImage] = useState('/images/pranav-hero-11.jpg');
+  const [activeIndex, setActiveIndex] = useState(10);
   const [isPaused, setIsPaused] = useState(false);
+  const activeSlide = heroSlides[activeIndex];
+
+  useEffect(() => {
+    heroSlides.forEach(({ src }) => {
+      const image = new Image();
+      image.src = src;
+    });
+  }, []);
 
   useEffect(() => {
     if (isPaused) {
@@ -17,20 +36,22 @@ export const MagazineHero: React.FC = () => {
     }
 
     const slideInterval = window.setInterval(() => {
-      setActiveImage((currentImage) => {
-        const currentIndex = heroImages.indexOf(currentImage);
-        return heroImages[(currentIndex + 1) % heroImages.length];
-      });
+      setActiveIndex((currentIndex) => (currentIndex + 1) % heroSlides.length);
     }, 5000);
 
     return () => window.clearInterval(slideInterval);
   }, [isPaused]);
 
+  const advanceSlide = () => {
+    setActiveIndex((currentIndex) => (currentIndex + 1) % heroSlides.length);
+    setIsPaused((paused) => !paused);
+  };
+
   return (
     <section id="cover" className="relative min-h-screen pt-20 pb-16 flex flex-col justify-between overflow-hidden bg-[#09090B] border-b border-[#F4F0EA]/15">
       {/* Background Grid & Vignette */}
       <div className="absolute inset-0 bg-magazine-grid opacity-30 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C83E3D]/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C83E3D]/8 rounded-full blur-[220px] pointer-events-none" />
 
       {/* Top Editorial Metadata Bar */}
       <div className="max-w-7xl mx-auto w-full px-6 md:px-12 z-10 flex flex-wrap items-center justify-between border-b border-[#F4F0EA]/20 pb-4 text-xs font-mono-editorial text-[#F4F0EA]/70 tracking-widest gap-4">
@@ -93,14 +114,14 @@ export const MagazineHero: React.FC = () => {
           transition={{ duration: 1, delay: 0.3 }}
           className="relative w-full aspect-[21/9] min-h-[340px] md:min-h-[520px] bg-[#121215] border border-[#F4F0EA]/20 overflow-hidden shadow-2xl group"
           data-cursor="PORTRAIT"
-          onClick={() => setIsPaused((paused) => !paused)}
+          onClick={advanceSlide}
           role="button"
           tabIndex={0}
-          aria-label={isPaused ? 'Resume photo reel' : 'Pause photo reel'}
+          aria-label="Show next photo and pause photo reel"
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               event.preventDefault();
-              setIsPaused((paused) => !paused);
+              advanceSlide();
             }
           }}
         >
@@ -111,27 +132,38 @@ export const MagazineHero: React.FC = () => {
           <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#C83E3D] z-20 pointer-events-none" />
 
           {/* Authentic Full Landscape Photo */}
-          <AnimatePresence initial={false} mode="sync">
+          <AnimatePresence initial={false} mode="wait">
             <motion.img
-              key={activeImage}
-              src={activeImage}
+              key={activeSlide.src}
+              src={activeSlide.src}
               alt="Pranav Kamble — Personal Diary Photo Reel"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1.1, ease: 'easeInOut' }}
-              className="absolute inset-0 w-full h-full object-cover object-[center_38%] grayscale contrast-110"
+              transition={{ duration: 0.9, ease: 'easeInOut' }}
+              style={{ objectPosition: activeSlide.position ?? 'center 38%', transform: `${activeSlide.rotate ? 'rotate(-90deg)' : ''} translateY(${activeSlide.offsetY ?? 0}%) scale(${activeSlide.scale ?? 1})` }}
+              className={`absolute inset-0 w-full h-full grayscale contrast-105 group-hover:grayscale-0 ${activeSlide.contain ? 'object-contain p-0' : 'object-cover'}`}
             />
           </AnimatePresence>
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/95 via-transparent to-[#09090B]/40" />
+          <div className="absolute inset-0 pointer-events-none" />
 
           {/* Overlaid Editorial Metadata Badges */}
           <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 font-mono-editorial text-xs z-20">
-            <div className="bg-[#09090B]/90 backdrop-blur-md border border-[#F4F0EA]/20 px-4 py-2 text-[#F4F0EA]">
-              <span className="text-[#C83E3D] font-bold">FIG 01.</span> FULL LANDSCAPE CANDID SPREAD // MUMBAI '26
-            </div>
+            <AnimatePresence initial={false} mode="wait">
+              <motion.div
+                key={activeSlide.src}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.9, ease: 'easeInOut' }}
+                className="bg-[#09090B]/80 border border-[#F4F0EA]/20 px-4 py-2 text-[#F4F0EA]"
+              >
+                {activeSlide.label && <span className="text-[#C83E3D] font-bold mr-2">{activeSlide.label}</span>}
+                {activeSlide.caption}
+              </motion.div>
+            </AnimatePresence>
 
             <div className="bg-[#C83E3D] text-white px-4 py-2 font-bold uppercase tracking-widest shadow-lg">
               COVER FEATURE ARTICLE
