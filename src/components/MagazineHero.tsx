@@ -3,23 +3,18 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { siteData } from '../data/siteData';
 
 const heroSlides = [
-  { src: '/images/pranav-hero-1.jpg', caption: 'A PERSONAL DIARY IN MOTION', label: 'FIG. 01', position: 'center 48%' },
   { src: '/images/pranav-hero-2.jpg', caption: 'A DIFFERENT ANGLE ON THE STORY', label: 'FIG. 02', rotate: true, contain: true, scale: 1.9 },
   { src: '/images/pranav-hero-3.jpg', caption: 'THOUGHTS, DAYS, AND EVERYTHING BETWEEN', label: 'FIG. 03', position: 'center 44%' },
   { src: '/images/pranav-hero-4.jpg', caption: 'NOTES FROM LIFE IN PROGRESS', label: 'FIG. 04', position: 'center 68%' },
-  { src: '/images/pranav-hero-5.jpg', caption: 'A QUIET MOMENT, SHARED OPENLY', label: 'FIG. 05', position: 'center 60%' },
   { src: '/images/pranav-hero-6.jpg', caption: 'THE PEOPLE AND PLACES THAT SHAPE US', label: 'FIG. 06' },
   { src: '/images/pranav-hero-7.jpg', caption: 'HONEST FRAMES FROM AN UNFINISHED STORY', label: 'FIG. 07' },
   { src: '/images/pranav-hero-8.jpg', caption: 'SMALL MEMORIES, BIG FEELINGS', label: 'FIG. 08' },
-  { src: '/images/pranav-hero-9.jpg', caption: 'KEEPING THE CAMERA CLOSE', label: 'FIG. 09', position: 'center 4%' },
-  { src: '/images/pranav-hero-10.jpg', caption: 'ANOTHER PAGE FROM THE DIARY', label: 'FIG. 10', position: 'center 20%' },
-  { src: '/images/pranav-hero-11.jpg', caption: 'THE LATEST ENTRY', label: 'FIG. 11', contain: true, scale: 2.8, offsetY: -17 },
   { src: '/images/pranav-hero-12.jpg', caption: 'COVER FEATURE ARTICLE', label: 'FIG. 12' }
 ];
 
 export const MagazineHero: React.FC = () => {
   const { title, quote, metadata } = siteData.personalInfo;
-  const [activeIndex, setActiveIndex] = useState(10);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const activeSlide = heroSlides[activeIndex];
 
@@ -141,7 +136,7 @@ export const MagazineHero: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9, ease: 'easeInOut' }}
-              style={{ objectPosition: activeSlide.position ?? 'center 38%', transform: `${activeSlide.rotate ? 'rotate(-90deg)' : ''} translateY(${activeSlide.offsetY ?? 0}%) scale(${activeSlide.scale ?? 1})` }}
+              style={{ objectPosition: activeSlide.position ?? 'center 38%', transform: `${activeSlide.rotate ? 'rotate(-90deg)' : ''} scale(${activeSlide.scale ?? 1})` }}
               className={`absolute inset-0 w-full h-full grayscale contrast-105 group-hover:grayscale-0 ${activeSlide.contain ? 'object-contain p-0' : 'object-cover'}`}
             />
           </AnimatePresence>
