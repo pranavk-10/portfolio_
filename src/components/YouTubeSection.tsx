@@ -1,11 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Play, Radio, Volume2, Sparkles } from 'lucide-react';
-import { siteData } from '../data/siteData';
+import { siteData, YouTubeVideo } from '../data/siteData';
 
 export const YouTubeSection: React.FC = () => {
   const { youtube } = siteData;
+  const [videos, setVideos] = useState(youtube.videos);
   const [activeVideo, setActiveVideo] = useState(youtube.videos[0]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const fetchLatestVideos = async () => {
+      try {
+        const response = await fetch(`/youtube.json?timestamp=${Date.now()}`, {
+          signal: controller.signal,
+          cache: 'no-store'
+        });
+        if (!response.ok) {
+          throw new Error('Unable to load the latest YouTube videos.');
+        }
+
+        const latestVideos = await response.json() as YouTubeVideo[];
+        if (latestVideos.length === 0) {
+          throw new Error('The YouTube feed contains no videos.');
+        }
+
+        setVideos(latestVideos);
+        setActiveVideo((currentVideo) => latestVideos.find((video) => video.id === currentVideo.id) ?? latestVideos[0]);
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return;
+        }
+        console.error('Could not refresh YouTube videos.', error);
+      }
+    };
+
+    fetchLatestVideos();
+    const refreshInterval = window.setInterval(fetchLatestVideos, 5 * 60 * 1000);
+
+    return () => {
+      controller.abort();
+      window.clearInterval(refreshInterval);
+    };
+  }, []);
 
   return (
     <section id="youtube" className="py-24 bg-[#09090B] text-[#F4F0EA] border-b border-[#F4F0EA]/10 relative overflow-hidden">
@@ -127,7 +165,7 @@ export const YouTubeSection: React.FC = () => {
 
         {/* Video Reel Selector Carousel */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {youtube.videos.map((vid) => (
+          {videos.map((vid) => (
             <motion.div
               key={vid.id}
               onClick={() => setActiveVideo(vid)}

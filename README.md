@@ -53,6 +53,8 @@ VITE_SITE_YOUTUBE="https://youtube.com/@pannu_core"
 VITE_SITE_X="https://x.com/your-handle"
 VITE_SITE_GITHUB="https://github.com/your-username"
 ```
+
+The YouTube section refreshes the three latest uploads every five minutes from `public/youtube.json`. The GitHub Action updates that file every 15 minutes from the public YouTube RSS feed and derives the channel ID from `@pannu_core`; no API key is required. If the feed is unavailable, the existing fallback entries remain visible.
 A template file **`.env.example`** is committed to the repository for reference.
 
 ### 2. Git Configuration (`.gitignore`)
