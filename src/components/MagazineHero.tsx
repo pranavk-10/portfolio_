@@ -54,7 +54,7 @@ export const MagazineHero: React.FC = () => {
     <section id="cover" className="relative min-h-screen pt-20 pb-16 flex flex-col justify-between overflow-hidden bg-[#09090B] border-b border-[#F4F0EA]/15">
       {/* Background Grid & Vignette */}
       <div className="absolute inset-0 bg-magazine-grid opacity-30 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C83E3D]/8 rounded-full blur-[220px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] bg-[#C83E3D]/8 rounded-full blur-[220px] pointer-events-none" />
 
       {/* Top Editorial Metadata Bar */}
       <div className="max-w-7xl mx-auto w-full px-6 md:px-12 z-10 flex flex-wrap items-center justify-between border-b border-[#F4F0EA]/20 pb-4 text-xs font-mono-editorial text-[#F4F0EA]/70 tracking-widest gap-4">
@@ -84,10 +84,10 @@ export const MagazineHero: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="lg:col-span-8 flex flex-col space-y-1"
           >
-            <h1 className="font-display-editorial font-extrabold text-7xl sm:text-9xl lg:text-[11rem] tracking-tighter leading-[0.82] text-[#F4F0EA] uppercase select-none">
+            <h1 className="font-display-editorial font-extrabold text-5xl sm:text-6xl md:text-8xl lg:text-[11rem] tracking-tighter leading-[0.82] text-[#F4F0EA] uppercase select-none">
               PRANAV
             </h1>
-            <h1 className="font-serif-editorial italic font-normal text-6xl sm:text-8xl lg:text-[9.5rem] tracking-tight leading-[0.82] text-[#C83E3D] select-none pl-2 sm:pl-6">
+            <h1 className="font-serif-editorial italic font-normal text-4xl sm:text-5xl md:text-7xl lg:text-[9.5rem] tracking-tight leading-[0.82] text-[#C83E3D] select-none pl-2 sm:pl-4 md:pl-6">
               KAMBLE
             </h1>
           </motion.div>

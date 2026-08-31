@@ -17,11 +17,11 @@ export const ProjectArchive: React.FC = () => {
             <span className="font-mono-editorial text-xs text-[#C83E3D] uppercase tracking-widest block mb-1 font-bold">
               04 — SELECTED ENGINEERING & AI PROJECTS
             </span>
-            <h2 className="font-display-editorial font-extrabold text-4xl sm:text-6xl text-[#09090B] tracking-tight uppercase">
+            <h2 className="font-display-editorial font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#09090B] tracking-tight uppercase">
               PROJECT ARCHIVE
             </h2>
           </div>
-          <div className="font-mono-editorial text-xs text-[#09090B]/70 max-w-sm">
+          <div className="font-mono-editorial text-[11px] sm:text-xs text-[#09090B]/70 max-w-sm">
             Interactive editorial showcase covering power electronics, Verilog digital microprocessors, RAG AI systems, and browser automation platforms.
           </div>
         </div>

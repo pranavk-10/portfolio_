@@ -51,13 +51,16 @@ export const Navbar: React.FC = () => {
         <a
           href="#cover"
           onClick={triggerConfetti}
-          className="group flex items-center space-x-3 font-display-editorial font-bold tracking-tighter text-lg md:text-xl text-[#F4F0EA]"
+          className="group flex items-center space-x-2 sm:space-x-3 font-display-editorial font-bold tracking-tighter text-sm sm:text-base md:text-lg text-[#F4F0EA]"
           data-cursor="CELEBRATE"
         >
-          <span className="w-9 h-9 rounded-none border border-[#F4F0EA]/40 flex items-center justify-center font-mono-editorial text-xs group-hover:bg-[#C83E3D] group-hover:border-[#C83E3D] group-hover:text-white transition-all shadow-md">
+          <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-none border border-[#F4F0EA]/40 flex items-center justify-center font-mono-editorial text-[10px] sm:text-xs group-hover:bg-[#C83E3D] group-hover:border-[#C83E3D] group-hover:text-white transition-all shadow-md">
             PK
           </span>
-          <span className="hidden sm:inline uppercase tracking-widest text-xs font-mono-editorial text-[#F4F0EA]/80 group-hover:text-[#F4F0EA] transition-colors">
+          <span className="inline sm:hidden uppercase tracking-widest text-[10px] font-mono-editorial text-[#F4F0EA]/80 group-hover:text-[#F4F0EA] transition-colors">
+            {siteData.personalInfo.name.substring(0, 6)}
+          </span>
+          <span className="hidden sm:inline uppercase tracking-widest text-[10px] sm:text-xs font-mono-editorial text-[#F4F0EA]/80 group-hover:text-[#F4F0EA] transition-colors">
             {siteData.personalInfo.name}
           </span>
         </a>

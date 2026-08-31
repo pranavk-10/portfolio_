@@ -48,7 +48,7 @@ export const YouTubeSection: React.FC = () => {
   return (
     <section id="youtube" className="py-24 bg-[#09090B] text-[#F4F0EA] border-b border-[#F4F0EA]/10 relative overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#C83E3D]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] bg-[#C83E3D]/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         

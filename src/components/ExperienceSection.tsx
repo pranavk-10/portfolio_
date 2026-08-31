@@ -27,7 +27,7 @@ export const ExperienceSection: React.FC = () => {
     <section id="experience" className="py-24 bg-[#09090B] border-b border-[#F4F0EA]/10 relative overflow-hidden">
       {/* Watermark Background */}
       <div className="absolute -top-12 left-0 w-full overflow-hidden pointer-events-none select-none opacity-[0.035]">
-        <span className="font-display-editorial font-black text-[14vw] tracking-tighter uppercase whitespace-nowrap text-[#F4F0EA]">
+        <span className="font-display-editorial font-black text-[8vw] sm:text-[10vw] md:text-[12vw] lg:text-[14vw] tracking-tighter uppercase text-[#F4F0EA] break-words">
           TEXAS INSTRUMENTS
         </span>
       </div>
@@ -40,11 +40,11 @@ export const ExperienceSection: React.FC = () => {
             <span className="font-mono-editorial text-xs text-[#C83E3D] uppercase tracking-widest block mb-1 font-bold">
               03 — INDUSTRY FEATURE & FIELD ENGINEERING
             </span>
-            <h2 className="font-display-editorial font-extrabold text-4xl sm:text-6xl text-[#F4F0EA] tracking-tight uppercase">
+            <h2 className="font-display-editorial font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#F4F0EA] tracking-tight uppercase">
               EXPERIENCE
             </h2>
           </div>
-          <div className="font-mono-editorial text-xs text-[#F4F0EA]/50 text-right">
+          <div className="font-mono-editorial text-[11px] sm:text-xs text-[#F4F0EA]/50 text-right">
             <div className="font-bold text-[#F4F0EA]/80">BANGALORE, KARNATAKA</div>
             <div>MAY 2026 – JUL 2026</div>
           </div>
