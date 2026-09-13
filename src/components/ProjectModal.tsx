@@ -66,7 +66,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <span>{project.subtitle}</span>
               <span>TIMELINE: {project.timeline}</span>
             </div>
-            <h3 className="font-display-editorial font-extrabold text-3xl sm:text-5xl text-[#09090B] uppercase tracking-tight">
+            <h3 className="font-display-editorial font-extrabold text-[clamp(2rem,8vw,3rem)] sm:text-5xl text-[#09090B] uppercase tracking-tight">
               {project.title}
             </h3>
           </div>

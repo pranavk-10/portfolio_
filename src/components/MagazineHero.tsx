@@ -84,10 +84,10 @@ export const MagazineHero: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="lg:col-span-8 flex flex-col space-y-1"
           >
-            <h1 className="font-display-editorial font-extrabold text-5xl sm:text-6xl md:text-8xl lg:text-[11rem] tracking-tighter leading-[0.82] text-[#F4F0EA] uppercase select-none">
+            <h1 className="font-display-editorial font-extrabold text-[clamp(2.75rem,14vw,5rem)] sm:text-6xl md:text-8xl lg:text-[11rem] tracking-tighter leading-[0.82] text-[#F4F0EA] uppercase select-none">
               PRANAV
             </h1>
-            <h1 className="font-serif-editorial italic font-normal text-4xl sm:text-5xl md:text-7xl lg:text-[9.5rem] tracking-tight leading-[0.82] text-[#C83E3D] select-none pl-2 sm:pl-4 md:pl-6">
+            <h1 className="font-serif-editorial italic font-normal text-[clamp(2.25rem,12vw,4rem)] sm:text-5xl md:text-7xl lg:text-[9.5rem] tracking-tight leading-[0.82] text-[#C83E3D] select-none pl-2 sm:pl-4 md:pl-6">
               KAMBLE
             </h1>
           </motion.div>

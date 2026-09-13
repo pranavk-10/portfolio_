@@ -7,6 +7,9 @@ dist
 dist-ssr
 build
 
+# Public portfolio assets
+!public/Pranav_Hardware.pdf
+
 # Environment variables
 .env
 .env.local

@@ -32,10 +32,10 @@ export const Footer: React.FC = () => {
             <span>MUMBAI, INDIA // {personalInfo.metadata.year}</span>
           </div>
 
-          <h2 className="font-display-editorial font-black text-6xl sm:text-8xl xl:text-9xl text-white tracking-tighter uppercase leading-[0.85] hover:text-stroke-white transition-all">
+          <h2 className="font-display-editorial font-black text-[clamp(3rem,14vw,6rem)] sm:text-8xl xl:text-9xl text-white tracking-tighter uppercase leading-[0.85] hover:text-stroke-white transition-all">
             LET'S TALK.
           </h2>
-          <p className="font-serif-editorial italic text-xl sm:text-3xl text-white/80 mt-6 max-w-2xl">
+          <p className="font-serif-editorial italic text-[clamp(1.125rem,4vw,1.875rem)] sm:text-3xl text-white/80 mt-6 max-w-2xl">
             Whether it’s power electronics, RTL Verilog architecture, product strategy, film recommendations, or just keeping things light.
           </p>
         </div>
@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
 
             {/* Resume Button */}
             <a
-              href="/resume.pdf"
+              href="/Pranav_Hardware.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between w-full bg-white text-[#08080A] px-6 py-4 font-mono-editorial text-xs font-bold uppercase tracking-widest hover:bg-[#FF3B30] hover:text-white transition-all group"
